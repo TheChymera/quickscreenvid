@@ -94,4 +94,4 @@ if ((DEBUG)); then
 	echo "wf-recorder ${WF_OPTIONS[@]}"
 fi
 
-wf-recorder "${WF_OPTIONS[@]}"
+wf-recorder ${WF_OPTIONS[@]}
