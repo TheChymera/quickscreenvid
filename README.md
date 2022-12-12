@@ -25,5 +25,5 @@ myuser@myhost ~ $ quickscreenvid.sh -h
         -b: Specify a regex string for sources to exclude, you can view your sources via `pattl list sources | grep Name`.
                 An example regex string which MAY NOT BE SUITABLE FOR YOU is `-b '^alsa_(input\.pci-0000|output).*?$'`.
         -h: displays help message.
-PLEASE REMEMBER to run \`quickscreenvid_kill.sh\` when you are finished recording!
+PLEASE REMEMBER to run `quickscreenvid_kill.sh` when you are finished recording!
 ```
