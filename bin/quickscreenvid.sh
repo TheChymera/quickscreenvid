@@ -14,7 +14,7 @@ USAGE="usage:\n\
         -b: Specify a regex string for sources to exclude, you can view your sources via \`pattl list sources | grep Name\`.\n\
                 An example regex string which MAY NOT BE SUITABLE FOR YOU is \`-b \'^alsa_(input\.pci-0000|output).*?$\'\`.\n\
         -h: displays help message.\n\
-PLEASE REMEMBER to run \`quickscreenvid_kill\` when you are finished recording!
+PLEASE REMEMBER to run \`quickscreenvid_kill.sh\` when you are finished recording!
 "
 
 while getopts ":b:f:dsh" flag
