@@ -21,7 +21,7 @@ myuser@myhost ~ $ quickscreenvid.sh -h
         -d: Print debugging output.
         -s: Use `slurp` to select subsection of screen.
         -f: Filename to save to.
-                An example regex string which MAY NOT BE SUITABLE FOR YOU is `-f $(date +"/home/$(whoami)/Videos/cameras/screenvid_${HOSTNAME}/%Y-%m-%dT%H:%M:%S.mp4")`.
+                An example filename which MAY NOT BE SUITABLE FOR YOU is `-f $(date +"/home/$(whoami)/Videos/cameras/screenvid_${HOSTNAME}/%Y-%m-%dT%H:%M:%S.mp4")`.
         -b: Specify a regex string for sources to exclude, you can view your sources via `pattl list sources | grep Name`.
                 An example regex string which MAY NOT BE SUITABLE FOR YOU is `-b '^alsa_(input\.pci-0000|output).*?$'`.
         -h: displays help message.

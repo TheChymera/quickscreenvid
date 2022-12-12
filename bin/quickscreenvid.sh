@@ -10,7 +10,7 @@ USAGE="usage:\n\
         -d: Print debugging output.\n\
         -s: Use \`slurp\` to select subsection of screen.\n\
         -f: Filename to save to.\n\
-                An example regex string which MAY NOT BE SUITABLE FOR YOU is \`-f \$(date +\"/home/$(whoami)/Videos/cameras/screenvid_${HOSTNAME}/%Y-%m-%dT%H:%M:%S.mp4\")\`.\n\
+                An example filename which MAY NOT BE SUITABLE FOR YOU is \`-f \$(date +\"/home/$(whoami)/Videos/cameras/screenvid_${HOSTNAME}/%Y-%m-%dT%H:%M:%S.mp4\")\`.\n\
         -b: Specify a regex string for sources to exclude, you can view your sources via \`pattl list sources | grep Name\`.\n\
                 An example regex string which MAY NOT BE SUITABLE FOR YOU is \`-b \'^alsa_(input\.pci-0000|output).*?$\'\`.\n\
         -h: displays help message.\n\
