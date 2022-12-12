@@ -2,20 +2,22 @@
 
 BLACKLIST=""
 DEBUG=0
-#FILENAME=0
+USESLURP=0
+FILENAME=""
 
 USAGE="usage:\n\
         $(basename "$0") [-d] [-b <blacklist-regex-string>] [-f <filename-to-save-to>]\n\
         -d: Print debugging output.\n\
+        -s: Use \`slurp\` to select subsection of screen.\n\
         -f: Filename to save to.\n\
-                An example regex string which MAY NOT BE SUITABLE FOR YOU is \`-f $(date +"/home/$(whoami)/Videos/cameras/screenvid_${HOSTNAME}/%Y-%m-%dT%H:%M:%S.mp4")\`.\n\
+                An example regex string which MAY NOT BE SUITABLE FOR YOU is \`-f \$(date +\"/home/$(whoami)/Videos/cameras/screenvid_${HOSTNAME}/%Y-%m-%dT%H:%M:%S.mp4\")\`.\n\
         -b: Specify a regex string for sources to exclude, you can view your sources via \`pattl list sources | grep Name\`.\n\
                 An example regex string which MAY NOT BE SUITABLE FOR YOU is \`-b \'^alsa_(input\.pci-0000|output).*?$\'\`.\n\
         -h: displays help message.\n\
 PLEASE REMEMBER to run \`quickscreenvid_kill\` when you are finished recording!
 "
 
-while getopts ":b:f:dh" flag
+while getopts ":b:f:dsh" flag
 do
         case "$flag" in
                 b)
@@ -23,6 +25,9 @@ do
                         ;;
                 f)
                         FILENAME="$OPTARG"
+                        ;;
+                s)
+                        USESLURP=1
                         ;;
                 d)
                         DEBUG=1
@@ -71,8 +76,22 @@ if ((DEBUG)); then
 	pactl list sources | grep Name
 fi
 
-if [ -z "$FILENAME" ]; then
-        wf-recorder --audio="Combined.monitor" -t
-else
-        wf-recorder --audio="Combined.monitor" -f $FILENAME -t
+WF_OPTIONS=(
+        --audio="Combined.monitor"
+        -t
+        )
+
+if ((USESLURP)); then
+        WF_OPTIONS+=("-g $(slurp)")
 fi
+
+if [[ "$FILENAME" ]]; then
+        WF_OPTIONS+=("-f $FILENAME")
+fi
+
+if ((DEBUG)); then
+	echo "This is the \`wf-recorder\` command we'll be running:"
+	echo "wf-recorder ${WF_OPTIONS[@]}"
+fi
+
+wf-recorder "${WF_OPTIONS[@]}"
